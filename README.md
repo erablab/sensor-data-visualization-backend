@@ -18,17 +18,17 @@ Port 3100 is used and can be modified by changing `PORT` variable in .env file.
 
 ### http://localhost:3100/:sensor/:data
 
-This will return an object with following structure:
-{
-    "code": 0,
-    "message": "Successful",
-    "result": []
-}
+This will return an object with following structure:\
+{\
+    "code": 0,\
+    "message": "Successful",\
+    "result": []\
+}\
 Code 0 and message "Successful" indicates response sent back successfully.\
 Code 1 and message "Error" indicates request not able to be processed.\
-Result contains the sensor data.\
+Result contains the sensor data.
 
-Find out more information on the format of the request parameters in Databse section down below.\
+Find out more information on the format of the request parameters in Databse section down below.
 
 #### Examples: 
 
@@ -47,7 +47,8 @@ eco2: CO2\
 timestamp: datetime data recorded\
 botIndex: brush bot associated index \
 latitude\
-longtitude\
+longtitude
+
 #### light_sensor
 id: unique key\
 lFull: Total Light\
@@ -57,7 +58,8 @@ lLux: Luminous Light\
 timestamp: datetime data recorded\
 botIndex: brush bot associated index \
 latitude\
-longtitude\
+longtitude
+
 #### power_sensor
 id: unique key\
 pb: Power from the Battery\
@@ -69,7 +71,8 @@ ic: Current from the Circuit\
 timestamp: datetime data recorded\
 botIndex: brush bot associated index \
 latitude\
-longtitude\
+longtitude
+
 #### soil_sensor
 id: unique key\
 mSoil: Soil Moisture\
@@ -77,7 +80,8 @@ tSoil: Soil Temperature\
 timestamp: datetime data recorded\
 botIndex: brush bot associated index \
 latitude\
-longtitude\
+longtitude
+
 #### temp_hmd_pres_alt_sensor
 id: unique key\
 t: Air Temperature\
@@ -87,7 +91,7 @@ h: Air Humidity\
 timestamp: datetime data recorded\
 botIndex: brush bot associated index \
 latitude\
-longtitude\
+longtitude
 
 ### Data fields
 botIndex: integer\
@@ -110,7 +114,7 @@ tSoil: integer\
 t: scale of 1\
 p: integer\
 a: integer\
-h: scale of 2\
+h: scale of 2
 
 ### Configuration
 
