@@ -41,13 +41,22 @@ app
   .get(function (req, res) {
     const sensor = req.params.sensor;
     const data = req.params.data;
-    query_statement =
-      "SELECT " +
-      data +
-      ", botIndex, latitude, longitude, timestamp FROM " + sensor;
+    if (sensor != "power_sensor") {
+      query_statement =
+        "SELECT " +
+        data +
+        ", botIndex, latitude, longitude, timestamp FROM " +
+        sensor;
+    }else{
+      query_statement =
+        "SELECT " +
+        data +
+        ", botIndex, timestamp FROM " +
+        sensor;
+    }
     db.query(query_statement, (err, result) => {
       if (err) {
-        message = "Error getting orders with these requirements";
+        message = "Error";
         res.send({
           code: 1,
           message: message,
