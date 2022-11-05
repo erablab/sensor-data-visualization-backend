@@ -36,7 +36,7 @@ app.use(
 );
 
 app
-  .route("/:sensor/:data")
+  .route("/raw/:sensor/:data")
 
   .get(function (req, res) {
     const sensor = req.params.sensor;
@@ -47,13 +47,37 @@ app
         data +
         ", botIndex, latitude, longitude, timestamp FROM " +
         sensor;
-    }else{
+    } else {
       query_statement =
-        "SELECT " +
-        data +
-        ", botIndex, timestamp FROM " +
-        sensor;
+        "SELECT " + data + ", botIndex, timestamp FROM " + sensor;
     }
+    db.query(query_statement, (err, result) => {
+      if (err) {
+        message = "Error";
+        res.send({
+          code: 1,
+          message: message,
+          result: err,
+        });
+      } else {
+        message = "Successful";
+        res.send({
+          code: 0,
+          message: message,
+          result: result,
+        });
+      }
+    });
+  });
+
+app
+  .route("/grid_map/:map/:timestamp")
+
+  .get(function (req, res) {
+    const grid_map = req.params.map;
+    const timestamp = req.params.timestamp;
+
+    query_statement = "SELECT * FROM " + grid_map + " WHERE timestamp = '" + timestamp + "';";
     db.query(query_statement, (err, result) => {
       if (err) {
         message = "Error";

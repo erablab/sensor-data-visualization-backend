@@ -16,9 +16,25 @@ This will start the backend sever and connect to the mysql databse
 
 Port 3100 is used and can be modified by changing `PORT` variable in .env file.
 
-### http://localhost:3100/:sensor/:data
+### http://localhost:3100/raw/:sensor/:data
 
-This will return an object with following structure:\
+This will return raw samples collected by the brushbots including values, timestamps, bot index and locations
+
+#### request parameters format
+
+sensor: raw sensor data table name
+data: sensor data field name
+
+### http://localhost:3100/grid_map/:grid_map/:timestamp
+
+This will return estimated values on a 2D grid map with values
+
+#### request parameters format
+
+grid_map: sensor value grid map table name
+timestamp: SQL datetime
+
+### Returned objects structure
 {\
     "code": 0,\
     "message": "Successful",\
@@ -32,7 +48,7 @@ Find out more information on the format of the request parameters in Databse sec
 
 #### Examples: 
 
-http://localhost:3100/light_sensor/lLux
+http://localhost:3100/raw/light_sensor/lLux
 
 
 ## Database
@@ -92,6 +108,90 @@ timestamp: datetime data recorded\
 botIndex: brush bot associated index \
 latitude\
 longtitude
+
+#### air_temperature_grid_map
+id: unique key\
+value: Air Temperature\
+index_x: row index of grid\
+index_y: colume index of grid\
+timestamp: datetime data recorded
+
+#### air_humidity_grid_map
+id: unique key\
+value: Air Humidity\
+index_x: row index of grid\
+index_y: colume index of grid\
+timestamp: datetime data recorded
+
+#### air_pressure_grid_map
+id: unique key\
+value: Air Pressure\
+index_x: row index of grid\
+index_y: colume index of grid\
+timestamp: datetime data recorded
+
+#### Altitude_grid_map
+id: unique key\
+value: Altitude\
+index_x: row index of grid\
+index_y: colume index of grid\
+timestamp: datetime data recorded
+
+#### eco2_grid_map
+id: unique key\
+value: CO2 concentration\
+index_x: row index of grid\
+index_y: colume index of grid\
+timestamp: datetime data recorded
+
+#### tvoc_grid_map
+id: unique key\
+value: Total Volatile Organic Compounds\
+index_x: row index of grid\
+index_y: colume index of grid\
+timestamp: datetime data recorded
+
+#### lFull_grid_map
+id: unique key\
+value: Total Light\
+index_x: row index of grid\
+index_y: colume index of grid\
+timestamp: datetime data recorded
+
+#### lVis_grid_map
+id: unique key\
+value: Visible Light\
+index_x: row index of grid\
+index_y: colume index of grid\
+timestamp: datetime data recorded
+
+#### lIR_grid_map
+id: unique key\
+value: Infrared Light\
+index_x: row index of grid\
+index_y: colume index of grid\
+timestamp: datetime data recorded
+
+#### lLux_grid_map
+id: unique key\
+value: Luminous Light\
+index_x: row index of grid\
+index_y: colume index of grid\
+timestamp: datetime data recorded
+
+#### mSoil_grid_map
+id: unique key\
+value: Soil Moisture\
+index_x: row index of grid\
+index_y: colume index of grid\
+timestamp: datetime data recorded
+
+#### tSoil_grid_map
+id: unique key\
+value: Soil Temperature\
+index_x: row index of grid\
+index_y: colume index of grid\
+timestamp: datetime data recorded
 
 ### Data fields
 botIndex: integer\
