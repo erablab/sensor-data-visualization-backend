@@ -1,15 +1,12 @@
-FROM node
+FROM node:8
 
-RUN mkdir -p /usr/src/app
-RUN mkdir -p /usr/src/app/backend
-
-WORKDIR  mkdir -p /usr/src/app/backend
+WORKDIR /usr/src/app
 
 COPY package*.json ./
+
 RUN npm install
 
 COPY . .
 
-EXPOSE 8080
-
-CMD ["node", "index.js"]
+EXPOSE 8005 
+CMD [ "npm", "start" ]
