@@ -6,13 +6,19 @@ const cors = require("cors");
 require("dotenv").config();
 const port = process.env.PORT || 3100;
 const host = process.env.HOST;
-db.connect((err) => {
-  if (err) {
-    console.log(err);
-  } else {
-    console.log("connect");
-  }
-});
+
+function connect() {
+  db.connect((err) => {
+    if (err) {
+      console.log(err);
+    } else {
+      console.log("connected");
+    }
+  });
+}
+
+setTimeout(connect, 10000);
+
 
 app.use(express.static("public"));
 app.use(express.json());
